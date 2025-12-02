@@ -101,8 +101,8 @@ graph TD
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/Task-Management-REST-API.git
-   cd Task-Management-REST-API
+   git clone https://github.com/R00t105/Task-Management.git
+   cd Task-Management
    ```
 
 2. **Configure Database**
