@@ -1,6 +1,7 @@
 package backend.taskmanagementrestapi.Entity;
 
 import backend.taskmanagementrestapi.Constant.TaskStatus;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
@@ -9,6 +10,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 
 @Entity
@@ -25,9 +27,7 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "*TITLE FIELD IS REQUIRED*")
     private String title;
-
     private String description;
 
     @Enumerated(EnumType.STRING)
@@ -36,10 +36,12 @@ public class Task {
 
     @CreatedDate
     @Column(updatable = false, nullable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm a")
    private LocalDateTime createdAt ;
 
     @LastModifiedDate
     @Column(nullable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm a")
     private LocalDateTime updatedAt;
 
 }

@@ -13,6 +13,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -62,10 +64,11 @@ public class TaskService {
     @Transactional
     public TaskResponse updateTaskById(Long id, TaskRequest taskRequest) {
         Task task = taskRepository.findById(id).orElseThrow(() -> new TaskNotFoundException( id));
-        task.setTitle(taskRequest.getTitle());
-        task.setDescription(taskRequest.getDescription());
-        if(taskRequest.getStatus() != null)
-            task.setStatus(taskRequest.getStatus());
+        if(taskRequest.getTitle() != null){task.setTitle(taskRequest.getTitle());}
+        if(taskRequest.getDescription() != null){task.setDescription(taskRequest.getDescription());}
+        if(taskRequest.getStatus() != null) {task.setStatus(taskRequest.getStatus());}
+
+        task.setUpdatedAt(LocalDateTime.now());
 
         return taskMapper.toTaskResponse(taskRepository.save(task));
     }
