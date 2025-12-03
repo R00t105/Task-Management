@@ -33,6 +33,8 @@
 - **DTO Pattern**: Separation of concerns using Data Transfer Objects (DTOs) for requests and responses.
 - **Object Mapping**: Automated mapping between Entities and DTOs using MapStruct.
 - **Auditing**: Automatic tracking of creation and modification timestamps.
+- **Security**: Used Spring Security to implement Authentication & Authorization.
+- **JWT**: Implement JWT.
 
 ## 🛠 Tech Stack
 
